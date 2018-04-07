@@ -1,0 +1,279 @@
+<!DOCtype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Value Picks</title>
+
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.css"/>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="script" href="./assets/javaScript/logic.js">
+</head>
+<body>
+<section>
+  <header>
+    <nav class="navbar navbar-inverse" style="height: 90px; margin-bottom: 0;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <img src="../images/lg.png" width="90" height="50" class="d-inline-block align-top" alt="">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"
+                  style="z-index: 1000">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar" style="margin-bottom: 0;">
+          <ul class="nav navbar-nav">
+            <li class="active" style="margin-left: 15px;"><a href="../../index.html">Home</a></li>
+            <li><a href="./scores.html">Scores</a></li>
+            <li><a href="./stats.html">Stats</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+          <button type="button" class="btn navbar-default btn-xs" id="openSignIn" data-toggle="modal"
+                  data-target="#login-modal" style="position: absolute;right: 30px; top: 10px;"><strong><span
+              class="disabled" style="color:black;font-size: large;">My Team</span></strong></button>
+
+          <button type="button" class="btn navbar-default btn-xs hide" id="logout" data-toggle="modal"
+                  data-target="#" style="position: absolute;right: 30px; top: 47px;"><strong><span
+              class="disabled" style="color:black;font-size: large;">LogOut</span></strong></button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Modal -->
+  <div class="modal fade bs-modal-sm" id="login-modal" tabindex="-1" role="dialog"
+       aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <br>
+        <div class="bs-example bs-example-tabs">
+          <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
+            <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
+            <li class=""><a href="#why" data-toggle="tab">Why?</a></li>
+          </ul>
+        </div>
+        <div class="modal-body">
+          <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in" id="why">
+              <p>We need this information so that you can receive access to the site and
+                its content. Rest assured your information will not be sold, traded, or
+                given to anyone.</p>
+              <p></p><br> Please contact <a href=""></a>rwalkerdevelopes@gmail.com</a>
+              for any other inquiries.</p>
+            </div>
+            <div class="tab-pane fade active in" id="signin">
+              <form class="form-horizontal">
+                <fieldset>
+                  <!-- Sign In Form -->
+                  <!-- Text input-->
+                  <div class="control-group">
+                    <label class="control-label" for="userid">UserName:</label>
+                    <div class="controls">
+                      <input required="" id="userid" name="userid" type="text"
+                             class="form-control" placeholder="Victor"
+                             class="input-medium" required="">
+                    </div>
+                  </div>
+
+                  <!-- Password input-->
+                  <div class="control-group">
+                    <label class="control-label"
+                           for="passwordinput">Password:</label>
+                    <div class="controls">
+                      <input required="" id="passwordinput" name="passwordinput"
+                             class="form-control" type="password"
+                             placeholder="********" class="input-medium">
+                    </div>
+                  </div>
+
+                  <!-- Multiple Checkboxes (inline) -->
+                  <div class="control-group">
+                    <label class="control-label" for="rememberme"></label>
+                    <div class="controls">
+                      <label class="checkbox inline" for="rememberme-0">
+                        <input type="checkbox" name="rememberme"
+                               id="rememberme-0" value="Remember me">
+                        Remember me
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Button -->
+                  <div class="control-group">
+                    <label class="control-label" for="signin"></label>
+                    <div class="controls">
+                      <button id="signin" name="signin" class="btn btn-success">
+                        Sign In
+                      </button>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+            <div class="tab-pane fade" id="signup">
+              <form class="form-horizontal">
+                <fieldset>
+                  <!-- Sign Up Form -->
+                  <!-- Text input-->
+                  <div class="control-group">
+                    <label class="control-label" for="Email">Email:</label>
+                    <div class="controls">
+                      <input id="Email" name="Email" class="form-control"
+                             type="text" placeholder="JoeSixpack@sixpacksrus.com"
+                             class="input-large" required="">
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="control-group">
+                    <label class="control-label" for="userid">Alias:</label>
+                    <div class="controls">
+                      <input id="userid" name="userid" class="form-control"
+                             type="text" placeholder="JoeSixpack"
+                             class="input-large" required="">
+                    </div>
+                  </div>
+
+                  <!-- Password input-->
+                  <div class="control-group">
+                    <label class="control-label" for="password">Password:</label>
+                    <div class="controls">
+                      <input id="password" name="password" class="form-control"
+                             type="password" placeholder="********"
+                             class="input-large" required="">
+                      <em>1-8 Characters</em>
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="control-group">
+                    <label class="control-label" for="reenterpassword">Re-Enter
+                      Password:</label>
+                    <div class="controls">
+                      <input id="reenterpassword" class="form-control"
+                             name="reenterpassword" type="password"
+                             placeholder="********" class="input-large"
+                             required="">
+                    </div>
+                  </div>
+
+                  <!-- Multiple Radios (inline) -->
+                  <br>
+                  <div class="control-group">
+                    <label class="control-label" for="humancheck">Humanity
+                      Check:</label>
+                    <div class="controls">
+                      <label class="radio inline" for="humancheck-0">
+                        <input type="radio" name="humancheck" id="humancheck-0"
+                               value="robot" checked="checked">I'm a
+                        Robot</label>
+                      <label class="radio inline" for="humancheck-1">
+                        <input type="radio" name="humancheck" id="humancheck-1"
+                               value="human">I'm Human</label>
+                    </div>
+                  </div>
+
+                  <!-- Button -->
+                  <div class="control-group">
+                    <label class="control-label" for="confirmsignup"></label>
+                    <div class="controls">
+                      <button id="confirmsignup" name="confirmsignup"
+                              class="btn btn-success">Sign Up
+                      </button>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <center>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close
+            </button>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Modal Sign up Test-->
+
+  <section id="contact" class="content-section">
+    <div class="contact-section">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>Feel free to ask us some questions about your draft or roster by feeling the contact form or visiting our
+          social network sites like Facebook,Instagram,Twitter.</p>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="exampleInputName2">Name</label>
+                <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail2">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+              </div>
+              <div class="form-group ">
+                <label for="exampleInputText">Your Message</label>
+                <textarea class="form-control" placeholder="Holla at Cha Boi"></textarea>
+              </div>
+              <button type="submit" class="btn btn-default">Send Message</button>
+            </form>
+
+            <hr>
+            <div class="contact us">
+              <h3>Follow Us</h3>
+              <ul class="list-inline banner-social-buttons">
+                <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-twitter"> <span class="network-name">Twitter</span></i></a>
+                </li>
+                <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-facebook"> <span class="network-name">Facebook</span></i></a>
+                </li>
+                <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-youtube-play"> <span
+                    class="network-name">Instagram</span></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAccga5ubuDi3yUxbpz9tD6C-LtVM2kMyc&callback=initMap"
+          async defer></script>
+  <div id="map"></div>
+  <script>
+    var map;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 33.7490, lng: -84.3880},
+        zoom: 8
+      });
+    }
+  </script>
+
+
+  <nav class="navbar navbar-inverse navbar-bottom" style="margin-bottom: 0;">
+    <div style="margin-left: 47%; margin-right: 47%;">&copy;Kobra Kai</div>
+  </nav>
+
+
+</body>
+
+
+</html>
